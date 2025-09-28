@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Shield, Award, QrCode, Phone } from "lucide-react";
 import heroImage from "@/assets/hero-certificates.jpg";
+import estatuaImage from "@/assets/estatua.png";
 
 const Index = () => {
   return (
@@ -8,9 +9,16 @@ const Index = () => {
       {/* Header */}
       <header className="bg-gradient-to-r from-primary via-primary-dark to-accent text-primary-foreground py-6">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-center tracking-wider">
-            FORTALEZA CERTIFICADOS
-          </h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-wider flex-1 text-center">
+              FORTALEZA CERTIFICADOS
+            </h1>
+            <img 
+              src={estatuaImage} 
+              alt="Estátua" 
+              className="h-16 md:h-20 opacity-30 hover:opacity-50 transition-opacity duration-300"
+            />
+          </div>
         </div>
       </header>
 
