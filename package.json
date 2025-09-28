@@ -1,4 +1,9 @@
 {
+  "name": "fortaleza-certs-valido",
+  "version": "0.0.1",
+  "homepage": "https://fortalezacertificados-ai.github.io/fortaleza-certs-valido"
+},
+{
   "name": "vite_react_shadcn_ts",
   "private": true,
   "version": "0.0.0",
