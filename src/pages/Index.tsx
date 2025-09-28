@@ -16,7 +16,7 @@ const Index = () => {
             <img 
               src={estatuaImage} 
               alt="Estátua" 
-              className="h-16 md:h-20 opacity-30 hover:opacity-50 transition-opacity duration-300"
+              className="h-16 md:h-20 opacity-65 hover:opacity-95 transition-opacity duration-300"
             />
           </div>
         </div>
