@@ -11,7 +11,7 @@ const certificateDatabase = {
     name: "João Silva",
     course: "Curso de Marketing Digital",
     date: "15/03/2024",
-    downloadUrl: "#"
+    downloadUrl: "public/certificados/identidade.pdf"
   },
   "CERT2024002": {
     valid: true,
