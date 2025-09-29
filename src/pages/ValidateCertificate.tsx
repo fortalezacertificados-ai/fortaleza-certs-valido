@@ -11,7 +11,7 @@ const certificateDatabase = {
     name: "João Silva",
     course: "Curso de Marketing Digital",
     date: "15/03/2024",
-    downloadUrl: "public/certificados/identidade.pdf"
+    downloadUrl: "/certificados/identidade.pdf"
   },
   "CERT2024002": {
     valid: true,
@@ -55,10 +55,11 @@ const ValidateCertificate = () => {
     }, 1000);
   };
 
-  const handleDownload = () => {
-    // Simulação de download
-    alert('Download iniciado! Em um sistema real, aqui seria feito o download do PDF.');
-  };
+   const handleDownload = () => {  if (certificateData?.downloadUrl) {
+    window.open(certificateData.downloadUrl.replace(/^public\//, "/"), 
+      "_blank" );
+  }
+};
 
   return (
     <div className="min-h-screen bg-background">
