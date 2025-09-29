@@ -55,11 +55,15 @@ const ValidateCertificate = () => {
     }, 1000);
   };
 
-   const handleDownload = () => {  if (certificateData?.downloadUrl) {
-    window.open(certificateData.downloadUrl.replace(/^public\//, "/"), 
-      "_blank" );
+  const handleDownload = () => {
+  if (certificateData?.downloadUrl) {
+    window.open(
+      certificateData.downloadUrl.replace(/^public\//, "/"),
+      "_blank"
+    );
   }
 };
+
 
   return (
     <div className="min-h-screen bg-background">
