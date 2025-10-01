@@ -27,7 +27,7 @@ const certificateDatabase = {
     date: "25/03/2024",
     downloadUrl: "/certificados/Certificado_PedroCosta.pdf"
   },
-  "IINBVLJOBU": {
+  "WL08O2K6GF": {
     valid: true,
     name: "Gabriel Ribeiro Silva",
     course: "Palestra de Inovação Tecnológica",
