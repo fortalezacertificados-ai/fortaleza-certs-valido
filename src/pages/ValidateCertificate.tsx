@@ -114,7 +114,7 @@ const ValidateCertificate = () => {
                 <Input
                   id="certificate-key"
                   type="text"
-                  placeholder="Ex: CERT2024001"
+                  placeholder="Ex: 2024001"
                   value={certificateKey}
                   onChange={(e) => setCertificateKey(e.target.value.toUpperCase())}
                   className="input-professional text-lg"
