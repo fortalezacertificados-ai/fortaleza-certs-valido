@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Shield, Download, ArrowLeft, CheckCircle, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,14 +18,14 @@ const certificateDatabase = {
     name: "Maria Santos",
     course: "Seminário de Gestão de Projetos",
     date: "20/03/2024",
-    downloadUrl: "#"
+    downloadUrl: "/certificados/Certificado_MariaSantos.pdf"
   },
   "2024003": {
     valid: true,
     name: "Pedro Costa",
     course: "Palestra de Inovação Tecnológica",
     date: "25/03/2024",
-    downloadUrl: "#"
+    downloadUrl: "/certificados/Certificado_PedroCosta.pdf"
   },
   "IINBVLJOBU": {
     valid: true,
@@ -34,25 +34,34 @@ const certificateDatabase = {
     date: "25/03/2024",
     downloadUrl: "/certificados/Certificado_GabrielRibeiroSilva.pdf"
   }
-  
 };
 
 type ValidationState = 'idle' | 'validating' | 'success' | 'error';
 
 const ValidateCertificate = () => {
+  const [searchParams] = useSearchParams();
   const [certificateKey, setCertificateKey] = useState("");
   const [validationState, setValidationState] = useState<ValidationState>('idle');
   const [certificateData, setCertificateData] = useState<any>(null);
 
-  const handleValidation = () => {
-    if (!certificateKey.trim()) return;
-    
+  // Valida automaticamente se existir ?key= na URL
+  useEffect(() => {
+    const key = searchParams.get("key");
+    if (key) {
+      setCertificateKey(key.toUpperCase());
+      handleValidation(key.toUpperCase());
+    }
+  }, [searchParams]);
+
+  const handleValidation = (keyParam?: string) => {
+    const key = keyParam || certificateKey;
+    if (!key.trim()) return;
+
     setValidationState('validating');
-    
-    // Simulação de tempo de validação
+
     setTimeout(() => {
-      const certificate = certificateDatabase[certificateKey.toUpperCase() as keyof typeof certificateDatabase];
-      
+      const certificate = certificateDatabase[key as keyof typeof certificateDatabase];
+
       if (certificate) {
         setCertificateData(certificate);
         setValidationState('success');
@@ -60,18 +69,14 @@ const ValidateCertificate = () => {
         setCertificateData(null);
         setValidationState('error');
       }
-    }, 1000);
+    }, 500); // leve delay para simular carregamento
   };
 
   const handleDownload = () => {
-  if (certificateData?.downloadUrl) {
-    window.open(
-      certificateData.downloadUrl.replace(/^public\//, "/"),
-      "_blank"
-    );
-  }
-};
-
+    if (certificateData?.downloadUrl) {
+      window.open(certificateData.downloadUrl.replace(/^public\//, "/"), "_blank");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -123,7 +128,7 @@ const ValidateCertificate = () => {
               </div>
 
               <Button
-                onClick={handleValidation}
+                onClick={() => handleValidation()}
                 disabled={!certificateKey.trim() || validationState === 'validating'}
                 className="btn-validate w-full text-lg py-3"
               >
@@ -148,7 +153,7 @@ const ValidateCertificate = () => {
                   <CheckCircle size={24} />
                   <span className="text-lg font-semibold">Chave Válida!</span>
                 </div>
-                
+
                 <div className="certificate-card p-6 bg-success/5 border-success/20">
                   <h3 className="text-xl font-bold text-foreground mb-4">
                     Informações do Certificado
@@ -159,7 +164,7 @@ const ValidateCertificate = () => {
                     <p><strong className="text-foreground">Data:</strong> {certificateData.date}</p>
                     <p><strong className="text-foreground">Chave:</strong> {certificateKey}</p>
                   </div>
-                  
+
                   <Button
                     onClick={handleDownload}
                     className="btn-hero mt-6 w-full"
