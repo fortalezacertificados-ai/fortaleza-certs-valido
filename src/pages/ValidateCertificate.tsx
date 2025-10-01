@@ -6,21 +6,21 @@ import { Input } from "@/components/ui/input";
 
 // Simulação de base de dados de certificados
 const certificateDatabase = {
-  "CERT2024001": {
+  "2024001": {
     valid: true,
     name: "João Silva",
     course: "Curso de Marketing Digital",
     date: "15/03/2024",
     downloadUrl: "/certificados/identidade.pdf"
   },
-  "CERT2024002": {
+  "2024002": {
     valid: true,
     name: "Maria Santos",
     course: "Seminário de Gestão de Projetos",
     date: "20/03/2024",
     downloadUrl: "#"
   },
-  "CERT2024003": {
+  "2024003": {
     valid: true,
     name: "Pedro Costa",
     course: "Palestra de Inovação Tecnológica",
@@ -196,7 +196,7 @@ const ValidateCertificate = () => {
             </p>
             <p className="text-sm text-muted-foreground">
               <strong>Exemplos de chaves válidas para teste:</strong><br />
-              CERT2024001 | CERT2024002 | CERT2024003
+              2024001 | 2024002 | 2024003
             </p>
           </div>
         </div>
