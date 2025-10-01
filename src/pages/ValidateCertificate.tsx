@@ -26,7 +26,15 @@ const certificateDatabase = {
     course: "Palestra de Inovação Tecnológica",
     date: "25/03/2024",
     downloadUrl: "#"
+  },
+  "4287ZCP6K4": {
+    valid: true,
+    name: "Gabriel Ribeiro Silva",
+    course: "Palestra de Inovação Tecnológica",
+    date: "25/03/2024",
+    downloadUrl: "/certificados/Certificado_GabrielRibeiroSilva.pdf"
   }
+  
 };
 
 type ValidationState = 'idle' | 'validating' | 'success' | 'error';
